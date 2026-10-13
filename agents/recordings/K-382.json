@@ -1,0 +1,846 @@
+[
+ {
+  "seq": 1,
+  "t": 0.1,
+  "type": "agent_started",
+  "agent": "ext",
+  "data": {
+   "title": "Агент внешней доставки"
+  }
+ },
+ {
+  "seq": 2,
+  "t": 1.32,
+  "type": "tool_call",
+  "agent": "ext",
+  "data": {
+   "call_id": "c01",
+   "tool": "get_tracking",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 3,
+  "t": 1.32,
+  "type": "tool_result",
+  "agent": "ext",
+  "data": {
+   "call_id": "c01",
+   "tool": "get_tracking",
+   "result": {
+    "container": "K-382",
+    "gateway": "Забайкальск",
+    "stage": "на таможне",
+    "border_plan": "2027-01-02",
+    "port_load": "обычная",
+    "payment_shift_days": 0.0,
+    "arrived_border": "2027-01-07",
+    "late_vs_plan_days": 4.5
+   }
+  }
+ },
+ {
+  "seq": 4,
+  "t": 2.04,
+  "type": "agent_message",
+  "agent": "ext",
+  "data": {
+   "text": "Контейнер K-382 прибыл в Забайкальск 7 января, опоздание 4 дня [c01].",
+   "refs": [
+    "c01"
+   ]
+  }
+ },
+ {
+  "seq": 5,
+  "t": 2.04,
+  "type": "agent_finished",
+  "agent": "ext",
+  "data": {
+   "mode": "llm",
+   "note": null,
+   "numbers_check": {
+    "ok": true,
+    "checked": 3,
+    "unverified": []
+   }
+  }
+ },
+ {
+  "seq": 6,
+  "t": 2.04,
+  "type": "agent_started",
+  "agent": "customs",
+  "data": {
+   "title": "Агент таможни"
+  }
+ },
+ {
+  "seq": 7,
+  "t": 2.86,
+  "type": "tool_call",
+  "agent": "customs",
+  "data": {
+   "call_id": "c02",
+   "tool": "check_documents",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 8,
+  "t": 2.86,
+  "type": "tool_result",
+  "agent": "customs",
+  "data": {
+   "call_id": "c02",
+   "tool": "check_documents",
+   "result": {
+    "container": "K-382",
+    "fields": [
+     {
+      "field": "Код ТН ВЭД",
+      "invoice": "условный код",
+      "declaration": "условный код",
+      "ok": true
+     },
+     {
+      "field": "Количество, шт.",
+      "invoice": 6000,
+      "packing_list": 6000,
+      "ok": true
+     },
+     {
+      "field": "Вес брутто, кг",
+      "invoice": 4292,
+      "packing_list": 4292,
+      "ok": true
+     }
+    ],
+    "errors": 0,
+    "found_before_filing": false,
+    "fix_days_if_missed": 0
+   }
+  }
+ },
+ {
+  "seq": 9,
+  "t": 3.91,
+  "type": "tool_call",
+  "agent": "customs",
+  "data": {
+   "call_id": "c03",
+   "tool": "customs_status",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 10,
+  "t": 3.91,
+  "type": "tool_result",
+  "agent": "customs",
+  "data": {
+   "call_id": "c03",
+   "tool": "customs_status",
+   "result": {
+    "container": "K-382",
+    "stage": "на таможне",
+    "duty_rate_pct": 8,
+    "vat_pct": 22,
+    "check": "запрошены дополнительные документы по таможенной стоимости (ТК ЕАЭС, ст. 325)",
+    "check_days": 12.9,
+    "release_without_guarantee": "2027-01-21",
+    "release_forecast": "2027-01-21",
+    "guarantee_option": {
+     "id": "guarantee",
+     "title": "Выпуск под обеспечение уплаты пошлин",
+     "cost_rub": 1410,
+     "saved_days": 8.1,
+     "benefit_rub": 11291,
+     "note": "обеспечение 285 840 ₽ банковской гарантией на 90 дней"
+    }
+   }
+  }
+ },
+ {
+  "seq": 11,
+  "t": 5.31,
+  "type": "tool_call",
+  "agent": "customs",
+  "data": {
+   "call_id": "c04",
+   "tool": "check_documents",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 12,
+  "t": 5.31,
+  "type": "tool_result",
+  "agent": "customs",
+  "data": {
+   "call_id": "c04",
+   "tool": "check_documents",
+   "result": {
+    "container": "K-382",
+    "fields": [
+     {
+      "field": "Код ТН ВЭД",
+      "invoice": "условный код",
+      "declaration": "условный код",
+      "ok": true
+     },
+     {
+      "field": "Количество, шт.",
+      "invoice": 6000,
+      "packing_list": 6000,
+      "ok": true
+     },
+     {
+      "field": "Вес брутто, кг",
+      "invoice": 4292,
+      "packing_list": 4292,
+      "ok": true
+     }
+    ],
+    "errors": 0,
+    "found_before_filing": false,
+    "fix_days_if_missed": 0
+   }
+  }
+ },
+ {
+  "seq": 13,
+  "t": 5.31,
+  "type": "tool_call",
+  "agent": "customs",
+  "data": {
+   "call_id": "c05",
+   "tool": "customs_status",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 14,
+  "t": 5.32,
+  "type": "tool_result",
+  "agent": "customs",
+  "data": {
+   "call_id": "c05",
+   "tool": "customs_status",
+   "result": {
+    "container": "K-382",
+    "stage": "на таможне",
+    "duty_rate_pct": 8,
+    "vat_pct": 22,
+    "check": "запрошены дополнительные документы по таможенной стоимости (ТК ЕАЭС, ст. 325)",
+    "check_days": 12.9,
+    "release_without_guarantee": "2027-01-21",
+    "release_forecast": "2027-01-21",
+    "guarantee_option": {
+     "id": "guarantee",
+     "title": "Выпуск под обеспечение уплаты пошлин",
+     "cost_rub": 1410,
+     "saved_days": 8.1,
+     "benefit_rub": 11291,
+     "note": "обеспечение 285 840 ₽ банковской гарантией на 90 дней"
+    }
+   }
+  }
+ },
+ {
+  "seq": 15,
+  "t": 5.32,
+  "type": "agent_message",
+  "agent": "customs",
+  "data": {
+   "text": "Документы сходятся [c04]; выпуск 21 января [c05], выпуск под обеспечение стоит 1 410 ₽ и экономит 8,1 сут [c05].",
+   "refs": [
+    "c04",
+    "c05"
+   ]
+  }
+ },
+ {
+  "seq": 16,
+  "t": 5.32,
+  "type": "agent_finished",
+  "agent": "customs",
+  "data": {
+   "mode": "rule",
+   "note": "в тексте ИИ было число не из расчета — показан текст расчетного правила",
+   "numbers_check": {
+    "ok": true,
+    "checked": 3,
+    "unverified": []
+   }
+  }
+ },
+ {
+  "seq": 17,
+  "t": 5.32,
+  "type": "agent_started",
+  "agent": "internal",
+  "data": {
+   "title": "Агент внутренней доставки"
+  }
+ },
+ {
+  "seq": 18,
+  "t": 5.95,
+  "type": "tool_call",
+  "agent": "internal",
+  "data": {
+   "call_id": "c06",
+   "tool": "svh_status",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 19,
+  "t": 5.96,
+  "type": "tool_result",
+  "agent": "internal",
+  "data": {
+   "call_id": "c06",
+   "tool": "svh_status",
+   "result": {
+    "container": "K-382",
+    "terminal": "Забайкальск",
+    "stage": "на таможне",
+    "days_at_terminal": 4.8,
+    "free_days": 8,
+    "storage_rub_day": 4900,
+    "wait_p10": 4.1,
+    "wait_p50": 7.3,
+    "wait_p90": 11.7,
+    "dispatch_forecast": "2027-02-01",
+    "priority_option": {
+     "id": "priority",
+     "title": "Приоритетный вывоз с СВХ",
+     "cost_rub": 50000,
+     "saved_days": 9.7,
+     "benefit_rub": 11291,
+     "note": "надбавка за ускоренную отправку (оценка), хранение сверх 8 суток не платим"
+    }
+   }
+  }
+ },
+ {
+  "seq": 20,
+  "t": 6.68,
+  "type": "tool_call",
+  "agent": "internal",
+  "data": {
+   "call_id": "c07",
+   "tool": "rail_eta",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 21,
+  "t": 6.68,
+  "type": "tool_result",
+  "agent": "internal",
+  "data": {
+   "call_id": "c07",
+   "tool": "rail_eta",
+   "result": {
+    "container": "K-382",
+    "to": "Федеральный ТЦ",
+    "eta_p10": "2027-02-06",
+    "eta_p50": "2027-02-10",
+    "eta_p90": "2027-02-14",
+    "plan": "2027-01-31",
+    "late_days": 9.7
+   }
+  }
+ },
+ {
+  "seq": 22,
+  "t": 8.35,
+  "type": "tool_call",
+  "agent": "internal",
+  "data": {
+   "call_id": "c08",
+   "tool": "svh_status",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 23,
+  "t": 8.35,
+  "type": "tool_result",
+  "agent": "internal",
+  "data": {
+   "call_id": "c08",
+   "tool": "svh_status",
+   "result": {
+    "container": "K-382",
+    "terminal": "Забайкальск",
+    "stage": "на таможне",
+    "days_at_terminal": 4.8,
+    "free_days": 8,
+    "storage_rub_day": 4900,
+    "wait_p10": 4.1,
+    "wait_p50": 7.3,
+    "wait_p90": 11.7,
+    "dispatch_forecast": "2027-02-01",
+    "priority_option": {
+     "id": "priority",
+     "title": "Приоритетный вывоз с СВХ",
+     "cost_rub": 50000,
+     "saved_days": 9.7,
+     "benefit_rub": 11291,
+     "note": "надбавка за ускоренную отправку (оценка), хранение сверх 8 суток не платим"
+    }
+   }
+  }
+ },
+ {
+  "seq": 24,
+  "t": 8.35,
+  "type": "tool_call",
+  "agent": "internal",
+  "data": {
+   "call_id": "c09",
+   "tool": "rail_eta",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 25,
+  "t": 8.35,
+  "type": "tool_result",
+  "agent": "internal",
+  "data": {
+   "call_id": "c09",
+   "tool": "rail_eta",
+   "result": {
+    "container": "K-382",
+    "to": "Федеральный ТЦ",
+    "eta_p10": "2027-02-06",
+    "eta_p50": "2027-02-10",
+    "eta_p90": "2027-02-14",
+    "plan": "2027-01-31",
+    "late_days": 9.7
+   }
+  }
+ },
+ {
+  "seq": 26,
+  "t": 8.35,
+  "type": "agent_message",
+  "agent": "internal",
+  "data": {
+   "text": "В федеральном ТЦ вероятно 10 февраля, не позже 14 февраля [c09]; приоритетный вывоз с СВХ стоит 50 000 ₽ и экономит 9,7 сут [c08].",
+   "refs": [
+    "c08",
+    "c09"
+   ]
+  }
+ },
+ {
+  "seq": 27,
+  "t": 8.35,
+  "type": "agent_finished",
+  "agent": "internal",
+  "data": {
+   "mode": "rule",
+   "note": "в тексте ИИ было число не из расчета — показан текст расчетного правила",
+   "numbers_check": {
+    "ok": true,
+    "checked": 4,
+    "unverified": []
+   }
+  }
+ },
+ {
+  "seq": 28,
+  "t": 8.35,
+  "type": "agent_started",
+  "agent": "regions",
+  "data": {
+   "title": "Агенты регионов"
+  }
+ },
+ {
+  "seq": 29,
+  "t": 8.88,
+  "type": "tool_call",
+  "agent": "regions",
+  "data": {
+   "call_id": "c10",
+   "tool": "top_regions",
+   "args": {
+    "n": 3
+   }
+  }
+ },
+ {
+  "seq": 30,
+  "t": 8.89,
+  "type": "tool_result",
+  "agent": "regions",
+  "data": {
+   "call_id": "c10",
+   "tool": "top_regions",
+   "result": {
+    "date": "2027-01-12",
+    "regions": [
+     {
+      "short": "Краснодар",
+      "fd": "Южный",
+      "stock": 1028,
+      "demand_per_day": 1049,
+      "cover_days": 1.0,
+      "stockout": "2027-01-16",
+      "deficit_days": 2.0,
+      "C": 492272,
+      "P": 443406,
+      "U": 0,
+      "R": 48866
+     },
+     {
+      "short": "Тюмень",
+      "fd": "Уральский",
+      "stock": 1070,
+      "demand_per_day": 1013,
+      "cover_days": 1.1,
+      "stockout": "2027-01-18",
+      "deficit_days": 2.0,
+      "C": 473322,
+      "P": 429713,
+      "U": 0,
+      "R": 43610
+     },
+     {
+      "short": "Москва Восток",
+      "fd": "Центральный",
+      "stock": 1751,
+      "demand_per_day": 1119,
+      "cover_days": 1.6,
+      "stockout": "2027-01-14",
+      "deficit_days": 2.0,
+      "C": 464469,
+      "P": 462005,
+      "U": 0,
+      "R": 2464
+     }
+    ],
+    "formula": "C = П + У + Р; П — дни дефицита × спрос в день × маржа, У — уценка излишка, Р — доп. перевозка"
+   }
+  }
+ },
+ {
+  "seq": 31,
+  "t": 10.29,
+  "type": "agent_message",
+  "agent": "regions",
+  "data": {
+   "text": "Задержка обходится дороже всего Краснодару (492 272 руб., закончится 16 января), Тюмени (473 322 руб., 18 января) и Москве-Востоку (464 469 руб., 14 января). [c10]",
+   "refs": [
+    "c10"
+   ]
+  }
+ },
+ {
+  "seq": 32,
+  "t": 10.3,
+  "type": "agent_finished",
+  "agent": "regions",
+  "data": {
+   "mode": "llm",
+   "note": null,
+   "numbers_check": {
+    "ok": true,
+    "checked": 6,
+    "unverified": []
+   }
+  }
+ },
+ {
+  "seq": 33,
+  "t": 10.3,
+  "type": "agent_started",
+  "agent": "orchestrator",
+  "data": {
+   "title": "Оркестратор S&OE-цикла"
+  }
+ },
+ {
+  "seq": 34,
+  "t": 10.95,
+  "type": "tool_call",
+  "agent": "orchestrator",
+  "data": {
+   "call_id": "c11",
+   "tool": "evaluate_levers",
+   "args": {
+    "container_id": "K-382"
+   }
+  }
+ },
+ {
+  "seq": 35,
+  "t": 10.96,
+  "type": "tool_result",
+  "agent": "orchestrator",
+  "data": {
+   "call_id": "c11",
+   "tool": "evaluate_levers",
+   "result": {
+    "container": "K-382",
+    "cost_of_delay_per_day_rub": 0,
+    "options": [
+     {
+      "id": "guarantee",
+      "title": "Выпуск под обеспечение уплаты пошлин",
+      "cost_rub": 1410,
+      "saved_days": 8.1,
+      "benefit_rub": 11291,
+      "note": "обеспечение 285 840 ₽ банковской гарантией на 90 дней",
+      "net_rub": 9881
+     },
+     {
+      "id": "priority",
+      "title": "Приоритетный вывоз с СВХ",
+      "cost_rub": 50000,
+      "saved_days": 9.7,
+      "benefit_rub": 11291,
+      "note": "надбавка за ускоренную отправку (оценка), хранение сверх 8 суток не платим",
+      "net_rub": -38709
+     }
+    ],
+    "best": "guarantee",
+    "limit_rub": 250000
+   }
+  }
+ },
+ {
+  "seq": 36,
+  "t": 11.37,
+  "type": "tool_call",
+  "agent": "orchestrator",
+  "data": {
+   "call_id": "c12",
+   "tool": "allocation_plan",
+   "args": {}
+  }
+ },
+ {
+  "seq": 37,
+  "t": 11.37,
+  "type": "tool_result",
+  "agent": "orchestrator",
+  "data": {
+   "call_id": "c12",
+   "tool": "allocation_plan",
+   "result": {
+    "federal_rc": "Федеральный ТЦ",
+    "hub_stock": 0,
+    "inflow_next_weeks": [
+     28,
+     28,
+     19,
+     38
+    ],
+    "priority_regions": [
+     "Краснодар",
+     "Тюмень",
+     "Москва Восток",
+     "Федеральный ТЦ",
+     "Ярославль"
+    ],
+    "rule": "отгрузка регионам по потребности: спрос на срок доставки и пересмотра плюс страховой запас 5 дней; при нехватке — сначала регионы с наибольшей стоимостью задержки"
+   }
+  }
+ },
+ {
+  "seq": 38,
+  "t": 14.13,
+  "type": "tool_call",
+  "agent": "orchestrator",
+  "data": {
+   "call_id": "c13",
+   "tool": "create_decision",
+   "args": {
+    "container_id": "K-382",
+    "lever": "guarantee",
+    "regions": [
+     "Краснодар",
+     "Тюмень",
+     "Москва Восток",
+     "Ярославль"
+    ],
+    "why": "Выбран рычаг «Выпуск под обеспечение уплаты пошлин» — наибольшая разница «сохраненная прибыль минус цена» 9881 ₽ [c11]. Приоритетные регионы: Краснодар, Тюмень, Москва Восток, Ярославль [c12]."
+   }
+  }
+ },
+ {
+  "seq": 39,
+  "t": 14.13,
+  "type": "tool_result",
+  "agent": "orchestrator",
+  "data": {
+   "call_id": "c13",
+   "tool": "create_decision",
+   "result": {
+    "ok": true,
+    "card": {
+     "container": "K-382",
+     "lever": "guarantee",
+     "option": {
+      "id": "guarantee",
+      "title": "Выпуск под обеспечение уплаты пошлин",
+      "cost_rub": 1410,
+      "saved_days": 8.1,
+      "benefit_rub": 11291,
+      "note": "обеспечение 285 840 ₽ банковской гарантией на 90 дней",
+      "net_rub": 9881
+     },
+     "options": [
+      {
+       "id": "guarantee",
+       "title": "Выпуск под обеспечение уплаты пошлин",
+       "cost_rub": 1410,
+       "saved_days": 8.1,
+       "benefit_rub": 11291,
+       "note": "обеспечение 285 840 ₽ банковской гарантией на 90 дней",
+       "net_rub": 9881
+      },
+      {
+       "id": "priority",
+       "title": "Приоритетный вывоз с СВХ",
+       "cost_rub": 50000,
+       "saved_days": 9.7,
+       "benefit_rub": 11291,
+       "note": "надбавка за ускоренную отправку (оценка), хранение сверх 8 суток не платим",
+       "net_rub": -38709
+      }
+     ],
+     "why": "Выбран рычаг «Выпуск под обеспечение уплаты пошлин» — наибольшая разница «сохраненная прибыль минус цена» 9881 ₽ [c11]. Приоритетные регионы: Краснодар, Тюмень, Москва Восток, Ярославль [c12].",
+     "regions": [
+      "Краснодар",
+      "Тюмень",
+      "Москва Восток",
+      "Ярославль"
+     ],
+     "cost_of_delay_per_day_rub": 0,
+     "in_limit": true,
+     "limit_rub": 250000
+    }
+   }
+  }
+ },
+ {
+  "seq": 40,
+  "t": 15.34,
+  "type": "agent_message",
+  "agent": "orchestrator",
+  "data": {
+   "text": "Решение для контейнера K-382: выпуск под обеспечение пошлины, сохраненная прибыль 9881 ₽ [c11]; приоритетные регионы: Краснодар, Тюмень, Москва Восток, Ярославль [c12].",
+   "refs": [
+    "c11",
+    "c12"
+   ]
+  }
+ },
+ {
+  "seq": 41,
+  "t": 15.34,
+  "type": "agent_finished",
+  "agent": "orchestrator",
+  "data": {
+   "mode": "llm",
+   "note": null,
+   "numbers_check": {
+    "ok": true,
+    "checked": 2,
+    "unverified": []
+   }
+  }
+ },
+ {
+  "seq": 42,
+  "t": 15.34,
+  "type": "decision_card",
+  "agent": "orchestrator",
+  "data": {
+   "container": "K-382",
+   "lever": "guarantee",
+   "option": {
+    "id": "guarantee",
+    "title": "Выпуск под обеспечение уплаты пошлин",
+    "cost_rub": 1410,
+    "saved_days": 8.1,
+    "benefit_rub": 11291,
+    "note": "обеспечение 285 840 ₽ банковской гарантией на 90 дней",
+    "net_rub": 9881
+   },
+   "options": [
+    {
+     "id": "guarantee",
+     "title": "Выпуск под обеспечение уплаты пошлин",
+     "cost_rub": 1410,
+     "saved_days": 8.1,
+     "benefit_rub": 11291,
+     "note": "обеспечение 285 840 ₽ банковской гарантией на 90 дней",
+     "net_rub": 9881
+    },
+    {
+     "id": "priority",
+     "title": "Приоритетный вывоз с СВХ",
+     "cost_rub": 50000,
+     "saved_days": 9.7,
+     "benefit_rub": 11291,
+     "note": "надбавка за ускоренную отправку (оценка), хранение сверх 8 суток не платим",
+     "net_rub": -38709
+    }
+   ],
+   "why": "Выбран рычаг «Выпуск под обеспечение уплаты пошлин» — наибольшая разница «сохраненная прибыль минус цена» 9881 ₽ [c11]. Приоритетные регионы: Краснодар, Тюмень, Москва Восток, Ярославль [c12].",
+   "regions": [
+    "Краснодар",
+    "Тюмень",
+    "Москва Восток",
+    "Ярославль"
+   ],
+   "cost_of_delay_per_day_rub": 0,
+   "in_limit": true,
+   "limit_rub": 250000,
+   "numbers_check": {
+    "ok": true,
+    "checked": 1,
+    "unverified": []
+   },
+   "mode": "mixed",
+   "tokens": 8967
+  }
+ },
+ {
+  "seq": 43,
+  "t": 15.34,
+  "type": "done",
+  "agent": null,
+  "data": {
+   "tokens": 8967
+  }
+ }
+]

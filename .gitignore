@@ -1,0 +1,12 @@
+# Секреты: только .env, в репозитории — .env.example
+.env
+.env.*
+!.env.example
+
+# Окружение и кэш
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store

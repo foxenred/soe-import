@@ -1,0 +1,13 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+pyyaml
+nbformat
+nbconvert
+ipykernel
+pytest
+httpx
+certifi
+python-dotenv
